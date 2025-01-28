@@ -143,7 +143,7 @@ const StreamingCandlestickChart = () => {
       // Auto-scroll to the last point
       const scroller = chart.scroller();
       scroller.autoHide(false);
-      
+
       setIsInitialized(true);
     });
   };
@@ -176,16 +176,16 @@ const StreamingCandlestickChart = () => {
         ]
       );
 
-      // Create new candle every 60 updates (~ 1 minute)
+      // Add the updated candle, and create new candle every 60 updates (~ 1 minute)
       if (currentCandle.current.updates >= 60) {
         const newCandle = initializeCandle(currentCandle.current.close);
         currentCandle.current = newCandle;
-        dataTable.current.addData([[ 
+        dataTable.current.addData([[
           newCandle.timestamp, 
           newCandle.open, 
           newCandle.high, 
           newCandle.low, 
-          newCandle.close 
+          newCandle.close
         ]]);
       }
     }, 1000); // Update every second
