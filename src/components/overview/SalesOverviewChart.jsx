@@ -144,6 +144,10 @@ const StreamingCandlestickChart = () => {
       const scroller = chart.scroller();
       scroller.autoHide(false);
 
+      // Ensure that chart dynamically adjusts and scrolls to the right
+      const axis = plot.xAxis();
+      axis.bounds("data", "data");
+
       setIsInitialized(true);
     });
   };
@@ -187,6 +191,11 @@ const StreamingCandlestickChart = () => {
           newCandle.low, 
           newCandle.close
         ]]);
+
+        // Ensure that the chart scrolls dynamically
+        const axis = chartInstance.current.plot(0).xAxis();
+        axis.bounds("data", "data");
+        chartInstance.current.draw();
       }
     }, 1000); // Update every second
 
