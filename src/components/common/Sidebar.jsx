@@ -19,7 +19,6 @@ const SIDEBAR_ITEMS = [
         color: "#22c55e",
         href: "/",
     },
-	
     { name: "Products", icon: ShoppingBag, color: "#4ade80", href: "/products" },
     { name: "Users", icon: Users, color: "#86efac", href: "/users" },
     { name: "Sales", icon: DollarSign, color: "#16a34a", href: "/sales" },
@@ -33,16 +32,16 @@ const Sidebar = () => {
 
     return (
         <motion.div
-            className={`relative z-10 h-screen flex-shrink-0 bg-black shadow-lg fixed right-0`} // Green and black theme, right-side bar
+            className={`relative z-10 h-screen flex-shrink-0 bg-black shadow-lg fixed right-0 top-0`} // Added 'top-0' for fixing the sidebar at the top
             animate={{ width: isSidebarOpen ? 260 : 80 }} // Dynamically control width
         >
             <div className="h-full flex flex-col justify-between p-4">
                 {/* Toggle Button */}
                 <motion.button
-                    whileHover={{ rotate: 0 }} // Changed animation to rotation
+                    whileHover={{ rotate: 0 }} // Rotation effect on hover
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="p-3 rounded-full bg-green-700 text-white flex items-center justify-center hover:bg-green-600 transition"
+                    className="p-4 rounded-full bg-green-700 text-white flex items-center justify-center hover:bg-green-600 transition duration-300"
                 >
                     <Menu size={24} />
                 </motion.button>
