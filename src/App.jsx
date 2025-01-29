@@ -9,6 +9,7 @@ import SalesPage from "./pages/SalesPage";
 import OrdersPage from "./pages/OrdersPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import SettingsPage from "./pages/SettingsPage";
+import Authpage from "./pages/AuthPage";
 
 function App() {
 	return (
@@ -27,6 +28,8 @@ function App() {
 				<Route path='/sales' element={<SalesPage />} />
 				<Route path='/orders' element={<OrdersPage />} />
 				<Route path='/analytics' element={<AnalyticsPage />} />
+				<Route path='/settings' element={<SettingsPage />} />
+				<Route path='/AuthPage' element={<Authpage />} />
 
 			</Routes>
 		</div>
