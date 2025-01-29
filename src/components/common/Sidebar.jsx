@@ -3,9 +3,11 @@ import {
     DollarSign,
     Menu,
     Settings,
+    SettingsIcon,
     ShoppingBag,
     ShoppingCart,
     TrendingUp,
+    User,
     Users,
 } from "lucide-react";
 import { useState } from "react";
@@ -24,7 +26,7 @@ const SIDEBAR_ITEMS = [
     { name: "Sales", icon: DollarSign, color: "#16a34a", href: "/sales" },
     { name: "Orders", icon: ShoppingCart, color: "#4ade80", href: "/orders" },
     { name: "Analytics", icon: TrendingUp, color: "#22c55e", href: "/analytics" },
-    { name: "Settings", icon: Settings, color: "#16a34a", href: "/settings" },
+    { name: "Profile", icon:User, color: "#4ade80", href: "/settings"}
 ];
 
 const Sidebar = () => {
