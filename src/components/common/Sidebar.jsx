@@ -1,66 +1,51 @@
-import {
-    BarChart2,
-    DollarSign,
-    Menu,
-    Settings,
-    SettingsIcon,
-    ShoppingBag,
-    ShoppingCart,
-    TrendingUp,
-    User,
-    Users,
-} from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { BarChart2, TrendingUp, LogInIcon, Menu, User, Users } from "lucide-react";
 
 const SIDEBAR_ITEMS = [
-    {
-        name: "Overview",
-        icon: BarChart2,
-        color: "#22c55e",
-        href: "/",
-    },
-    { name: "Products", icon: ShoppingBag, color: "#4ade80", href: "/products" },
-    { name: "Users", icon: Users, color: "#86efac", href: "/users" },
-    { name: "Sales", icon: DollarSign, color: "#16a34a", href: "/sales" },
-    { name: "Orders", icon: ShoppingCart, color: "#4ade80", href: "/orders" },
-    { name: "Analytics", icon: TrendingUp, color: "#22c55e", href: "/analytics" },
-    { name: "Profile", icon:User, color: "#4ade80", href: "/settings"}
+    { name: "Overview", icon: BarChart2, color: "#FFFFFF", href: "/" },
+    { name: "Trades", icon: TrendingUp, color: "#FFFFFF", href: "/analytics" },
+    { name: "Profile", icon: User, color: "#FFFFFF", href: "/settings" }
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ isAuthenticated }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const location = useLocation();
+
+    // Hide the sidebar on the AuthPage
+    if (location.pathname === "/AuthPage") return null;
+
+    // Filter out "Login/SignUp" if user is authenticated
+    const filteredItems = isAuthenticated
+        ? SIDEBAR_ITEMS
+        : [...SIDEBAR_ITEMS, { name: "Login/SignUp", icon: LogInIcon, color: "#FFFFFF", href: "/AuthPage" }];
 
     return (
         <motion.div
-            className={`relative z-10 h-screen flex-shrink-0 bg-black shadow-lg fixed right-0 top-0`} // Added 'top-0' for fixing the sidebar at the top
-            animate={{ width: isSidebarOpen ? 260 : 80 }} // Dynamically control width
+            className="relative z-50 h-screen flex-shrink-0 bg-[#040c1c] shadow-lg fixed right-0 top-0"
+            animate={{ width: isSidebarOpen ? 260 : 80 }}
         >
             <div className="h-full flex flex-col justify-between p-4">
-                {/* Toggle Button */}
                 <motion.button
-                    whileHover={{ rotate: 0 }} // Rotation effect on hover
+                    whileHover={{ rotate: 0 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="p-4 rounded-full bg-green-700 text-white flex items-center justify-center hover:bg-green-600 transition duration-300"
+                    className="p-4 rounded-full bg-[#182434] text-white flex items-center justify-center hover:bg-gray-700 transition duration-300"
                 >
                     <Menu size={24} />
                 </motion.button>
 
-                {/* Navigation Items */}
                 <nav className="mt-10 flex flex-col gap-2">
-                    {SIDEBAR_ITEMS.map((item) => (
+                    {filteredItems.map((item) => (
                         <Link key={item.href} to={item.href}>
                             <motion.div
-                                className="flex items-center gap-4 text-sm font-semibold p-3 rounded-lg cursor-pointer text-green-300 hover:bg-green-800"
-                                whileHover={{ scale: 1.05 }} // Subtle zoom animation
+                                className="flex items-center gap-4 text-sm font-semibold p-3 rounded-lg cursor-pointer text-[#182434] hover:bg-[#182434]"
+                                whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <item.icon
-                                    size={24}
-                                    style={{ color: item.color, minWidth: "24px" }}
-                                />
+                                <item.icon size={24} style={{ color: item.color, minWidth: "24px" }} />
                                 {isSidebarOpen && (
                                     <motion.span
                                         className="whitespace-nowrap text-white"
@@ -77,9 +62,8 @@ const Sidebar = () => {
                     ))}
                 </nav>
 
-                {/* Footer */}
-                <div className="text-green-500 text-xs text-center mt-auto">
-                    <p>&copy; 2025 Your Company</p>
+                <div className="text-[#182434] text-xs text-center mt-auto">
+                    <p>&copy; ASTROBUGS</p>
                 </div>
             </div>
         </motion.div>
