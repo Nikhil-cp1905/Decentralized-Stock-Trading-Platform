@@ -60,7 +60,7 @@ const OverviewPage = () => {
   }, []);
 
   return (
-    <div className='flex-1 overflow-auto relative z-10 bg-black text-green-300'>
+    <div className='flex-1 overflow-auto relative z-10 bg-[black] text-green-300'>
       <Header title='Overview' textColor="text-green-300" />
 
       <main className='max-w-7xl mx-auto py-6 px-4 lg:px-8'>
@@ -71,10 +71,10 @@ const OverviewPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <StatCard name='Total Sales' icon={Zap} value={`$${totalSales}`} color='#22c55e' backgroundColor="bg-green-800" />
-          <StatCard name='New Users' icon={Users} value={newUsers} color='#8B5CF6' backgroundColor="bg-green-700" />
-          <StatCard name='Wallet' icon={ShoppingBag} value={`$${walletBalance}`} color='#EC4899' backgroundColor="bg-green-700" />
-          <StatCard name='Conversion Rate' icon={BarChart2} value={`${conversionRate.toFixed(2)}%`} color='#10B981' backgroundColor="bg-green-600" />
+          <StatCard name='Total Sales' icon={Zap} value={`$${totalSales}`} color='#22c55e' backgroundColor="bg-[#040c1c]" />
+          <StatCard name='New Users' icon={Users} value={newUsers} color='#8B5CF6' backgroundColor="bg-[#040c1c]" />
+          <StatCard name='Wallet' icon={ShoppingBag} value={`$${walletBalance}`} color='#EC4899' backgroundColor="bg-[#040c1c]" />
+          <StatCard name='Conversion Rate' icon={BarChart2} value={`${conversionRate.toFixed(2)}%`} color='#10B981' backgroundColor="bg-[#040c1c]" />
         </motion.div>
 
         {/* Stock Stats */}
@@ -84,9 +84,9 @@ const OverviewPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <StatCard name='Current Price' icon={Zap} value={`$${currentPrice}`} color='#6366F1' backgroundColor="bg-green-800" />
-          <StatCard name='Stocks Owned' icon={ShoppingBag} value={stocksOwned} color='#EC4899' backgroundColor="bg-green-700" />
-          <StatCard name='Gain/Loss' icon={Zap} value={`$${gainLoss.toFixed(2)}`} color='#F59E0B' backgroundColor="bg-green-600" />
+          <StatCard name='Current Price' icon={Zap} value={`$${currentPrice}`} color='#6366F1' backgroundColor="bg-[#040c1c]" />
+          <StatCard name='Stocks Owned' icon={ShoppingBag} value={stocksOwned} color='#EC4899' backgroundColor="bg-[#040c1c]" />
+          <StatCard name='Gain/Loss' icon={Zap} value={`$${gainLoss.toFixed(2)}`} color='#F59E0B' backgroundColor="bg-[#040c1c]" />
         </motion.div>
 
         {/* Buy/Sell Buttons */}
@@ -107,13 +107,13 @@ const OverviewPage = () => {
 
         {/* CHARTS */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-          <div className="bg-green-900 p-4 rounded-lg shadow-lg">
+          <div className="bg-[#040c1c] p-4 rounded-lg shadow-lg">
             <SalesOverviewChart />
           </div>
-          <div className="bg-green-900 p-4 rounded-lg shadow-lg">
+          <div className="bg-[#040c1c] p-4 rounded-lg shadow-lg">
             <CategoryDistributionChart />
           </div>
-          <div className="bg-green-900 p-4 rounded-lg shadow-lg">
+          <div className="bg-[#040c1c] p-4 rounded-lg shadow-lg">
             <SalesChannelChart />
           </div>
         </div>
